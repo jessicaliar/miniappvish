@@ -15,8 +15,9 @@ ActiveRecord::Schema.define(version: 20170522165512) do
 
   create_table "lists", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "publico"
     t.integer  "list_id"
+    t.integer  "user_id"
+    t.boolean  "publico"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

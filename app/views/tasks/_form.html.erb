@@ -25,5 +25,7 @@
   </div>
   <div class="actions">
     <%= f.submit %>
+
+    <%= link_to "Logout", :destroy_user_session, method: :delete %>
   </div>
 <% end %>

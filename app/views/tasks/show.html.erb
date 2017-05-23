@@ -1,18 +1,21 @@
 <p id="notice"><%= notice %></p>
 
+<p><b>Logado como:</b> <%= current_user.email %></p>
+
 <p>
   <strong>Name:</strong>
   <%= @task.name %>
 </p>
 
 <p>
-  <strong>Publico:</strong>
+  <strong>Feito:</strong>
   <%= @task.publico %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @task.task_id %>
+  <strong>Task:</strong>
+  <%= @task.id %>
+  <%= @task.name %>
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
