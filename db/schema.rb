@@ -15,9 +15,8 @@ ActiveRecord::Schema.define(version: 20170522165512) do
 
   create_table "lists", force: :cascade do |t|
     t.string   "name"
-    t.integer  "list_id"
     t.integer  "user_id"
-    t.boolean  "publico"
+    t.boolean  "public"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170522165512) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name"
-    t.integer  "task_id"
+    t.integer  "list_id"
     t.boolean  "done"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
