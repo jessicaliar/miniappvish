@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
-
-<p><b>Logado como:</b> <%= current_user.email %></p>
+ <p><b>Logado como:</b> <%= current_user.email %></p>
 
 <p>
   <strong>Name:</strong>
@@ -17,6 +16,8 @@
   <%= @list.id %>
   <%= @list.name %>
 </p>
+
+
 
 <%= link_to 'Edit', edit_list_path(@list) %> |
 <%= link_to 'Back', lists_path %>
