@@ -1,23 +1,18 @@
 <p id="notice"><%= notice %></p>
- <p><b>Logado como:</b> <%= current_user.email %></p>
+ 
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nome da Lista:</strong>
   <%= @list.name %>
 </p>
 
 <p>
   <strong>Publico:</strong>
   <%= @list.public %>
-</p>
 
-<p>
-  <strong>List:</strong>
-  <%= @list.id %>
-  <%= @list.name %>
 </p>
 
 
 
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+<%= link_to 'Editar', edit_list_path(@list) %> |
+<%= link_to 'Voltar', lists_path %>

@@ -3,20 +3,21 @@
  <p><b>Logado como:</b> <%= current_user.email %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nome da tarefa:</strong>
   <%= @task.name %>
 </p>
 
 <p>
   <strong>Feito:</strong>
-  <%= @task.publico %>
+  <%= @task.done ? "Feita" : "Pendente" %>
 </p>
 
 <p>
   <strong>Task:</strong>
   <%= @task.id %>
-  <%= @task.name %>
 </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+
+
+<%= link_to 'Editar', edit_task_path(@task) %> |
+<%= link_to 'Voltar', tasks_path %>
