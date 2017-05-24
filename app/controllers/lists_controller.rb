@@ -5,7 +5,7 @@ class ListsController < ApplicationController
   # GET /lists.json
   def index
     @lists = current_user.lists 
-    @public_lists = current_user.where(public: true)
+    @public_lists = List.where(public: true)
   end
 
   # GET /lists/1
@@ -20,6 +20,8 @@ class ListsController < ApplicationController
 
   # GET /lists/1/edit
   def edit
+    redirect_to @task, notice: 'Só o dono da lista pode editar.' if @list.user != current_user 
+    
   end
 
   # POST /lists
@@ -29,7 +31,7 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to @list, notice: 'List was successfully created.' }
+        format.html { redirect_to @list, notice: 'Lista criada.' }
         format.json { render :show, status: :created, location: @list }
       else
         format.html { render :new }
@@ -43,7 +45,7 @@ class ListsController < ApplicationController
   def update
     respond_to do |format|
       if @list.update(list_params)
-        format.html { redirect_to @list, notice: 'List was successfully updated.' }
+        format.html { redirect_to @list, notice: 'Lista atualizada.' }
         format.json { render :show, status: :ok, location: @list }
       else
         format.html { render :edit }
