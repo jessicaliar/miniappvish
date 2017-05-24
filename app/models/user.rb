@@ -5,4 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable   
 
    has_many :lists
+   has_and_belongs_to_many :favorite_lists, class_name: List 
+
+   #pra continuar https://apidock.com/rails/ActiveRecord/Associations/ClassMethods/has_and_belongs_to_many
+
+
 end

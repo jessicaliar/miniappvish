@@ -18,7 +18,7 @@ class TasksController < ApplicationController
   end
 
   # GET /tasks/1/edit
-  def edit
+  def edit    
   end
 
   # POST /tasks
@@ -71,4 +71,4 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:name, :publico, :user_id, :id)
     end
-end
+  end
