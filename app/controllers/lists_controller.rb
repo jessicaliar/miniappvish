@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:show, :edit, :update, :destroy, :bookmark]
 
   # GET /lists
   # GET /lists.json
@@ -63,6 +63,19 @@ class ListsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def bookmark
+    if current_user.favorite_list << @list
+        format.html { redirect_to @list, notice: 'Lista favoritada.' }
+        format.json { render :show, status: :created, location: @list }
+      else
+        format.html { render :new }
+        format.json { render json: @list.errors, status: :unprocessable_entity }
+      end
+
+    
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

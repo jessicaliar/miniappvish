@@ -4,6 +4,6 @@ class List < ActiveRecord::Base
 
 	accepts_nested_attributes_for :tasks, allow_destroy: true
 
-	has_and_belongs_to_many :favorite_users, class_name: User 
+	has_and_belongs_to_many :favorite_user, class_name: "User"
 end
 

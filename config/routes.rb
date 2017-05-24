@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
-
+  root to: "list#index"
   get 'users/new'
 
   resources :tasks
   resources :lists
-  resources :tasks
-  resources :lists
   devise_for :users
   devise_for :models
+
+  resources :list do
+  post "/bookmark", action: :bookmark, as: :bookmark, on: :member
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
