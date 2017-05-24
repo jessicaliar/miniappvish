@@ -5,6 +5,7 @@ class ListsController < ApplicationController
   # GET /lists.json
   def index
     @lists = current_user.lists 
+    @public_lists = current_user.where(public: true)
   end
 
   # GET /lists/1
@@ -69,7 +70,7 @@ class ListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.require(:list).permit(:name, :public, tasks_attributes: [:name, :done, :_destroy])
+      params.require(:list).permit(:name, :public, tasks_attributes: [:id, :name, :done, :_destroy])
       
     end
 end
