@@ -66,9 +66,6 @@ class ListsController < ApplicationController
   def bookmark
     if current_user.favorite_lists.where(id: @list.id).any?
        redirect_to @list, notice: 'Essa lista já é sua favorita.'
-#     else if params[:destroy] == true
-#     current_user.favorite_lists.delete(@list)
-#      redirect_to @list, notice: 'Lista retirada de favoritas.'
     else if current_user.favorite_lists << @list
         format.html { redirect_to @list, notice: 'Lista favoritada.' }
         format.json { render :show, status: :created, location: @list }

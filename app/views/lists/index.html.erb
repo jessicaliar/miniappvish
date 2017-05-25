@@ -75,8 +75,6 @@
         <td><%= current_user.favorite_lists.count %></td>
         <td><%= list.public ? "Publica" : "Privada" %></td>
         <td><%= link_to ' [ Mostrar ]', list %></td>
-<!--        <td><%= link_to ' [ Adicionar aos Favoritos ]', bookmark_list_path(list), method: :post %></td>
-        <td><%= link_to ' [ Retirar de Favoritos ]', bookmark_list_path(list, detroy: true), method: :post %></td>-->
 
       </tr>
     <% end %>
