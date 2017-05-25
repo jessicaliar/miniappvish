@@ -57,6 +57,33 @@
 </table>
 
 
+<h1>Listas Favoritas</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Nome da Lista |</th>
+      <th> Tarefas |</th>
+      <th> Privacidade</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @current_user.favorite_lists.each do |list| %>
+      <tr>
+        <td><%= current_user.favorite_lists.name %></td>
+        <td><%= current_user.favorite_lists.count %></td>
+        <td><%= list.public ? "Publica" : "Privada" %></td>
+        <td><%= link_to '[ Mostrar ]', list %></td>
+        <td><%= link_to '[ FAVORITAR ]', bookmark_list_path(list), method: :post %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
 
 
 

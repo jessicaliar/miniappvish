@@ -6,6 +6,7 @@ class ListsController < ApplicationController
   def index
     @lists = current_user.lists 
     @public_lists = List.where(public: true)
+    @favorite_lists = current_user.favorite_lists.where(bookmark: true)
   end
 
   # GET /lists/1
@@ -20,8 +21,6 @@ class ListsController < ApplicationController
 
   # GET /lists/1/edit
   def edit
-    redirect_to @task, notice: 'Só o dono da lista pode editar.' if @list.user != current_user 
-    
   end
 
   # POST /lists
@@ -65,15 +64,16 @@ class ListsController < ApplicationController
   end
 
   def bookmark
-    if current_user.favorite_lists << @list
+    if current_user.favorite_lists.where(id: @list.id).any?
+      redirect_to @list, notice: 'Não pode ser favoritada novamente.'
+    else if current_user.favorite_lists << @list
         format.html { redirect_to @list, notice: 'Lista favoritada.' }
         format.json { render :show, status: :created, location: @list }
       else
         format.html { render :new }
         format.json { render json: @list.errors, status: :unprocessable_entity }
       end
-
-    
+    end
   end
 
 
@@ -85,7 +85,7 @@ class ListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.require(:list).permit(:name, :public, tasks_attributes: [:id, :name, :done, :_destroy])
+      params.require(:list).permit(:name, :public, tasks_attributes: [:id, :name, :done, :destroy])
       
     end
 end

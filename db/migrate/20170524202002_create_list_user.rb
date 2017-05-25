@@ -1,7 +1,7 @@
 class CreateListUser < ActiveRecord::Migration
   def change
     create_table :list_users do |t|
-      t.integer :list_d
+      t.integer :list_id
       t.integer :user_id
     end
 
