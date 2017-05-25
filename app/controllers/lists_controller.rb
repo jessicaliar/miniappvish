@@ -65,7 +65,7 @@ class ListsController < ApplicationController
   end
 
   def bookmark
-    if current_user.favorite_list << @list
+    if current_user.favorite_lists << @list
         format.html { redirect_to @list, notice: 'Lista favoritada.' }
         format.json { render :show, status: :created, location: @list }
       else

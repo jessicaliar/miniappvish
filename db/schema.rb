@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524202002) do
+ActiveRecord::Schema.define(version: 20170524213812) do
 
   create_table "list_users", force: :cascade do |t|
     t.integer "list_d"
@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(version: 20170524202002) do
     t.boolean  "public"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "lists_users", force: :cascade do |t|
+    t.integer "list_id"
+    t.integer "user_id"
   end
 
   create_table "models", force: :cascade do |t|
