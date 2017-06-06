@@ -71,8 +71,8 @@
   <tbody>
     <% @current_user.favorite_lists.each do |list| %>
       <tr>
-        <td><%= current_user.favorite_lists.name %></td>
-        <td><%= current_user.favorite_lists.count %></td>
+        <td><%= list.name %></td>
+        <td><%= list.tasks.count %></td>
         <td><%= list.public ? "Publica" : "Privada" %></td>
         <td><%= link_to ' [ Mostrar ]', list %></td>
 

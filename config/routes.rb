@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "list#index"
+  root to: "lists#index"
   get 'users/new'
 
   resources :tasks

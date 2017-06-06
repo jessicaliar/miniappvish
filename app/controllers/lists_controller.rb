@@ -17,6 +17,7 @@ class ListsController < ApplicationController
   # GET /lists/new
   def new
     @list = current_user.lists.new
+    3.times { @list.tasks.build }
   end
 
   # GET /lists/1/edit
@@ -66,16 +67,12 @@ class ListsController < ApplicationController
   def bookmark
     if current_user.favorite_lists.where(id: @list.id).any?
        redirect_to @list, notice: 'Essa lista já é sua favorita.'
-    else if current_user.favorite_lists << @list
+    else
+      current_user.favorite_lists << @list
         format.html { redirect_to @list, notice: 'Lista favoritada.' }
         format.json { render :show, status: :created, location: @list }
-      else
-        format.html { render :new }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
-      end
     end
   end
-#end
 
 
   private
